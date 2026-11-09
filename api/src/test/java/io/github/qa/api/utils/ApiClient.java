@@ -26,7 +26,9 @@ public final class ApiClient {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URL)
                 .setContentType(ContentType.JSON)
-                .setAccept(ContentType.JSON)
+                // Restful-Booker answers 418 unless Accept is exactly "application/json";
+                // setAccept(ContentType.JSON) would send several JSON media types.
+                .addHeader("Accept", "application/json")
                 .addFilter(new AllureRestAssured())
                 .log(LogDetail.URI)
                 .build();
