@@ -1,7 +1,7 @@
 import Menu from '../screens/Menu.js';
 import LoginScreen from '../screens/LoginScreen.js';
 import CatalogScreen from '../screens/CatalogScreen.js';
-import { restartApp, acceptNativeDialog, getNativeDialogMessage } from '../helpers/app.js';
+import { restartApp, acceptNativeDialog, getDialogMessage } from '../helpers/app.js';
 import { USERS, MESSAGES } from '../data/testData.js';
 
 describe('Login', () => {
@@ -41,9 +41,9 @@ describe('Login', () => {
         await CatalogScreen.waitForIsShown();
 
         await Menu.goTo('log out');
-        await acceptNativeDialog();
-        await expect(await getNativeDialogMessage(MESSAGES.loggedOut)).toBe(MESSAGES.loggedOut);
-        await acceptNativeDialog();
+        await acceptNativeDialog('Log Out');
+        await expect(await getDialogMessage(MESSAGES.loggedOut)).toBe(MESSAGES.loggedOut);
+        await acceptNativeDialog('OK');
         await LoginScreen.waitForIsShown();
     });
 });
