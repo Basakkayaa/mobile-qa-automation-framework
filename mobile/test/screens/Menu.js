@@ -29,6 +29,16 @@ class Menu {
         if (!(await counter.isExisting())) return 0;
         return Number(await counter.getText()) || 0;
     }
+
+    /** Waits until the badge shows the expected number; the badge updates asynchronously. */
+    async waitForCartCount(expected, timeout = 10000) {
+        let actual;
+        await browser.waitUntil(async () => {
+            actual = await this.getCartCount();
+            return actual === expected;
+        }, { timeout, interval: 500 }).catch(() => {});
+        return actual;
+    }
 }
 
 export default new Menu();

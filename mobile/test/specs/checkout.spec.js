@@ -36,7 +36,7 @@ describe('Checkout and payment', () => {
         await checkoutCompleteScreen.waitForIsShown();
 
         // After the order the cart must be empty again.
-        await expect(await Menu.getCartCount()).toBe(0);
+        await expect(await Menu.waitForCartCount(0)).toBe(0);
     });
 
     it('TC-CHK-02 requires the mandatory shipping fields @regression', async () => {

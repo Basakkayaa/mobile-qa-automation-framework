@@ -17,11 +17,18 @@ export async function acceptNativeDialog() {
     await button.click();
 }
 
-/** Reads the message of a native Android dialog. */
-export async function getNativeDialogMessage() {
+/**
+ * Reads the message of a native Android dialog.
+ * Waits for non-empty text: when one dialog replaces another, the old one is briefly still on screen.
+ */
+export async function getNativeDialogMessage(expected) {
     const message = $('android=new UiSelector().resourceId("android:id/message")');
-    await message.waitForDisplayed();
-    return message.getText();
+    let text = '';
+    await browser.waitUntil(async () => {
+        text = (await message.isExisting()) ? await message.getText() : '';
+        return expected ? text === expected : text !== '';
+    }, { timeout: 10000, interval: 300 }).catch(() => {});
+    return text;
 }
 
 /** Converts a price label such as "$29.99" to a number. */

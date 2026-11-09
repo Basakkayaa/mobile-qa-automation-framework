@@ -42,7 +42,7 @@ describe('Login', () => {
 
         await Menu.goTo('log out');
         await acceptNativeDialog();
-        await expect(await getNativeDialogMessage()).toBe(MESSAGES.loggedOut);
+        await expect(await getNativeDialogMessage(MESSAGES.loggedOut)).toBe(MESSAGES.loggedOut);
         await acceptNativeDialog();
         await LoginScreen.waitForIsShown();
     });

@@ -29,8 +29,7 @@ class CheckoutPaymentScreen extends BaseScreen {
     }
 
     async isErrorShown(field) {
-        const element = BaseScreen.byId(`${FIELDS[field]}-error-message`);
-        return element.waitForDisplayed({ timeout: 5000 }).then(() => true, () => false);
+        return scrollToId(`${FIELDS[field]}-error-message`).then(() => true, () => false);
     }
 }
 

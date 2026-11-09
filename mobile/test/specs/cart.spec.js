@@ -13,14 +13,14 @@ describe('Shopping cart', () => {
 
     it('TC-CART-01 adds a product and updates the cart badge @smoke @regression', async () => {
         await ProductScreen.addToCart();
-        await expect(await Menu.getCartCount()).toBe(1);
+        await expect(await Menu.waitForCartCount(1)).toBe(1);
     });
 
     it('TC-CART-02 adds several units and calculates the total price @regression', async () => {
         const unitPrice = parsePrice(await ProductScreen.getPrice());
         await ProductScreen.setQuantity(3);
         await ProductScreen.addToCart();
-        await expect(await Menu.getCartCount()).toBe(3);
+        await expect(await Menu.waitForCartCount(3)).toBe(3);
 
         await Menu.openCart();
         await CartScreen.waitForIsShown();
@@ -35,6 +35,6 @@ describe('Shopping cart', () => {
         await CartScreen.removeFirstItem();
 
         await CartScreen.emptyCartMessage.waitForDisplayed();
-        await expect(await Menu.getCartCount()).toBe(0);
+        await expect(await Menu.waitForCartCount(0)).toBe(0);
     });
 });

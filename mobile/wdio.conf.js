@@ -57,5 +57,8 @@ export const config = {
         await browser.saveScreenshot(path.join(ARTIFACTS_DIR, `${name}.png`));
         const source = await driver.getPageSource();
         fs.writeFileSync(path.join(ARTIFACTS_DIR, `${name}.xml`), source);
+        // A compact list of what was on screen, readable straight from the CI log.
+        const onScreen = [...source.matchAll(/(?:content-desc|text)="([^"]+)"/g)].map((m) => m[1]);
+        console.log(`[on screen at failure] ${[...new Set(onScreen)].join(' | ')}`);
     },
 };

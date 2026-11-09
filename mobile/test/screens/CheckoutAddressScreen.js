@@ -35,9 +35,9 @@ class CheckoutAddressScreen extends BaseScreen {
         await button.click();
     }
 
+    /** Scrolls to the field's error message, because errors at the top leave the viewport. */
     async isErrorShown(field) {
-        const element = CheckoutAddressScreen.error(FIELDS[field]);
-        return element.waitForDisplayed({ timeout: 5000 }).then(() => true, () => false);
+        return scrollToId(`${FIELDS[field]}-error-message`).then(() => true, () => false);
     }
 }
 
