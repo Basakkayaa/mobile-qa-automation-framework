@@ -1,7 +1,7 @@
 # Mobile & API Test Automation Framework
 
-[![Mobile E2E tests (Android)](https://github.com/{{REPO}}/actions/workflows/mobile-tests.yml/badge.svg)](https://github.com/{{REPO}}/actions/workflows/mobile-tests.yml)
-[![API tests (Rest Assured)](https://github.com/{{REPO}}/actions/workflows/api-tests.yml/badge.svg)](https://github.com/{{REPO}}/actions/workflows/api-tests.yml)
+[![Mobile E2E tests (Android)](https://github.com/Basakkayaa/mobile-qa-automation-framework/actions/workflows/mobile-tests.yml/badge.svg)](https://github.com/Basakkayaa/mobile-qa-automation-framework/actions/workflows/mobile-tests.yml)
+[![API tests (Rest Assured)](https://github.com/Basakkayaa/mobile-qa-automation-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/Basakkayaa/mobile-qa-automation-framework/actions/workflows/api-tests.yml)
 
 End-to-end test automation for a shopping app on Android and a REST API, running on every push in GitHub Actions.
 
