@@ -1,0 +1,16 @@
+# Node / WebdriverIO
+node_modules/
+mobile/allure-results/
+mobile/allure-report/
+mobile/artifacts/
+mobile/apps/*.apk
+mobile/apps/download/
+
+# Java / Maven
+api/target/
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store
