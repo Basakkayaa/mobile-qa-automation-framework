@@ -1,11 +1,12 @@
 import { APP_PACKAGE } from '../../wdio.android.conf.js';
 
 /**
- * Restarts the app so every test starts from a clean, logged-out state with an empty cart.
- * The demo app keeps its state in memory, so a cold restart is enough.
+ * Restarts the app with its data cleared, so every test starts logged out with an empty cart.
+ * A plain restart is not enough: the app persists the session and the cart on the device.
  */
 export async function restartApp() {
     await driver.terminateApp(APP_PACKAGE);
+    await driver.execute('mobile: clearApp', { appId: APP_PACKAGE });
     await driver.activateApp(APP_PACKAGE);
 }
 
